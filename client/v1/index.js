@@ -36,7 +36,7 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // 2. Log the variable
 
 var cheapestLink = 'https://www.faguo-store.com/fr/vetements/7606-arcy-t-shirt-en-coton-recycle-kaki.html';
-console.log('Cheapest T-Shirt (17.5euros): \n', cheapestLink);
+//console.log('Cheapest T-Shirt (17.5euros): \n', cheapestLink);
 
 /**
  * 👕
@@ -52,6 +52,9 @@ const {marketplace} = require('./data.js');
 // 🎯 TODO 2: Number of products
 // 1. Create a variable and assign it the number of products
 // 2. Log the variable
+
+var nbOfProducts = marketplace.length;
+console.log(nbOfProducts);
 
 // 🎯 TODO 3: Brands name
 // 1. Create a variable and assign it the list of brands name only
