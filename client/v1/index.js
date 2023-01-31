@@ -61,14 +61,14 @@ var nbOfProducts = marketplace.length;
 // 2. Log the variable
 // 3. Log how many brands we have
 
-var brands = [];
+var brandsName = [];
 for(let i = 0; i < nbOfProducts; i++) {
-  if(brands.includes(marketplace[i].brand) == false) {
-    brands.push(marketplace[i].brand);
+  if(brandsName.includes(marketplace[i].brand) == false) {
+    brandsName.push(marketplace[i].brand);
   }
 }
-//console.log(brands);
-//console.log(brands.length);
+//console.log(brandsName);
+//console.log(brandsName.length);
 
 // 🎯 TODO 4: Sort by price
 // 1. Create a function to sort the marketplace products by price
@@ -115,7 +115,7 @@ for(let i = 0; i < nbOfProducts; i++) {
   averagePrice += marketplace[i].price;
 }
 averagePrice = averagePrice / nbOfProducts;
-console.log(averagePrice);
+//console.log(averagePrice);
 
 /**
  * 🏎
@@ -139,6 +139,24 @@ console.log(averagePrice);
 //
 // 2. Log the variable
 // 3. Log the number of products by brands
+
+const brands = {
+  'panafrica' : [],
+  'loom' : [],
+  'hast' : []
+};
+for(let i = 0; i < nbOfProducts; i++) {
+  if(marketplace[i].brand == 'panafrica') 
+    brands.panafrica.push(marketplace[i]);
+  if(marketplace[i].brand == 'loom') 
+    brands.loom.push(marketplace[i]);
+  if(marketplace[i].brand == 'hast') 
+    brands.hast.push(marketplace[i]);
+}
+console.log(brands);
+console.log(brands.panafrica.length);
+console.log(brands.loom.length);
+console.log(brands.hast.length);
 
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
