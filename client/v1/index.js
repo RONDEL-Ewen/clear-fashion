@@ -2,7 +2,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode#invoking_strict_mode
 'use strict';
 
-console.log('🚀 This is it.');
+//console.log('🚀 This is it.');
 
 const MY_FAVORITE_BRANDS = [
   {
@@ -19,8 +19,8 @@ const MY_FAVORITE_BRANDS = [
   }
 ];
 
-console.table(MY_FAVORITE_BRANDS);
-console.log(MY_FAVORITE_BRANDS[0]);
+//console.table(MY_FAVORITE_BRANDS);
+//console.log(MY_FAVORITE_BRANDS[0]);
 
 /**
  * 🌱
@@ -454,11 +454,19 @@ for(let i = 0; i < COTELE_PARIS.length; i++) {
     reasonable = false;
   }
 }
-console.log(reasonable);
+//console.log(reasonable);
 
 // 🎯 TODO 3: Find a specific product
 // 1. Find the product with the uuid `2b9a47e3-ed73-52f6-8b91-379e9c8e526c`
 // 2. Log the product
+
+var product;
+for(let i = 0; i < COTELE_PARIS.length; i++) {
+  if(COTELE_PARIS[i].uuid == '2b9a47e3-ed73-52f6-8b91-379e9c8e526c') {
+    product = COTELE_PARIS[i];
+  }
+}
+console.log(product);
 
 // 🎯 TODO 4: Delete a specific product
 // 1. Delete the product with the uuid `2b9a47e3-ed73-52f6-8b91-379e9c8e526c`
