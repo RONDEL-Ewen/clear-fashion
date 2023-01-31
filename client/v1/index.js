@@ -104,11 +104,18 @@ for(let i = 0; i < nbOfProducts; i++) {
     marketplaceRange.push(marketplace[i]);
   }
 }
-console.log(marketplaceRange);
+//console.log(marketplaceRange);
 
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
 // 2. Log the average
+
+var averagePrice = 0;
+for(let i = 0; i < nbOfProducts; i++) {
+  averagePrice += marketplace[i].price;
+}
+averagePrice = averagePrice / nbOfProducts;
+console.log(averagePrice);
 
 /**
  * 🏎
