@@ -198,7 +198,7 @@ brands.hast.sort(function compareDate(a,b) {
   if(a.released > b.released) return 1;
   return 0;
 });
-console.log(brands);
+//console.log(brands);
 
 /**
  * 💶
@@ -210,6 +210,28 @@ console.log(brands);
 // 🎯 TODO 11: Compute the p90 price value
 // 1. Compute the p90 price value of each brand
 // The p90 value (90th percentile) is the lower value expected to be exceeded in 90% of the products
+
+brands.panafrica.sort(function compare(a,b) {
+  if(a.price < b.price) return -1;
+  if(a.price > b.price) return 1;
+  return 0;
+});
+brands.loom.sort(function compare(a,b) {
+  if(a.price < b.price) return -1;
+  if(a.price > b.price) return 1;
+  return 0;
+});
+brands.hast.sort(function compare(a,b) {
+  if(a.price < b.price) return -1;
+  if(a.price > b.price) return 1;
+  return 0;
+});
+const panafricap90 = brands.panafrica[Math.ceil(0.9*brands.panafrica.length)].price;
+console.log('Panafrica :', panafricap90);
+const loomp90 = brands.loom[Math.ceil(0.9*brands.loom.length)].price;
+console.log('Loom :', loomp90);
+const hastp90 = brands.hast[Math.ceil(0.9*brands.hast.length)].price;
+console.log('Hast :', hastp90);
 
 /**
  * 🧥
