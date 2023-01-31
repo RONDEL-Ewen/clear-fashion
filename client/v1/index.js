@@ -227,11 +227,11 @@ brands.hast.sort(function compare(a,b) {
   return 0;
 });
 const panafricap90 = brands.panafrica[Math.ceil(0.9*brands.panafrica.length)].price;
-console.log('Panafrica :', panafricap90);
+//console.log('Panafrica :', panafricap90);
 const loomp90 = brands.loom[Math.ceil(0.9*brands.loom.length)].price;
-console.log('Loom :', loomp90);
+//console.log('Loom :', loomp90);
 const hastp90 = brands.hast[Math.ceil(0.9*brands.hast.length)].price;
-console.log('Hast :', hastp90);
+//console.log('Hast :', hastp90);
 
 /**
  * 🧥
@@ -424,6 +424,22 @@ const COTELE_PARIS = [
 // 🎯 TODO 1: New released products
 // // 1. Log if we have new products only (true or false)
 // // A new product is a product `released` less than 2 weeks.
+
+function isLessThanTwoWeeks(dateStr) {
+  const givenDate = new Date(dateStr);
+  const now = Date.now();
+  const diff = now - givenDate.getTime();
+  return diff < 14 * 24 * 60 * 60 * 1000;
+}
+const result = [];
+for(let i = 0; i < COTELE_PARIS.length; i++) {
+  result.push(isLessThanTwoWeeks(COTELE_PARIS[i].released));
+}
+if(result.includes(false)) {
+  console.log(false);
+} else {
+  console.log(true);
+}
 
 // 🎯 TODO 2: Reasonable price
 // // 1. Log if coteleparis is a reasonable price shop (true or false)
