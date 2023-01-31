@@ -89,7 +89,7 @@ var sortedByPrice = marketplace.sort(function compare(a,b) {
 
 var sortedByDate = marketplace.sort(function compareDate(a,b) {
   if(a.released < b.released) return 1;
-  if(a.released > b.released) return 11;
+  if(a.released > b.released) return -1;
   return 0;
 });
 //console.log(sortedByDate);
@@ -177,11 +177,28 @@ brands.hast.sort(function compare(a,b) {
   if(a.price > b.price) return -1;
   return 0;
 });
-console.log(brands);
+//console.log(brands);
 
 // 🎯 TODO 10: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
 // 2. Log the sort
+
+brands.panafrica.sort(function compareDate(a,b) {
+  if(a.released < b.released) return -1;
+  if(a.released > b.released) return 1;
+  return 0;
+});
+brands.loom.sort(function compareDate(a,b) {
+  if(a.released < b.released) return -1;
+  if(a.released > b.released) return 1;
+  return 0;
+});
+brands.hast.sort(function compareDate(a,b) {
+  if(a.released < b.released) return -1;
+  if(a.released > b.released) return 1;
+  return 0;
+});
+console.log(brands);
 
 /**
  * 💶
