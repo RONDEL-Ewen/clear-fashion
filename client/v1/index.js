@@ -67,13 +67,20 @@ for(let i = 0; i < nbOfProducts; i++) {
     brands.push(marketplace[i].brand);
   }
 }
-console.log(brands);
-console.log(brands.length);
+//console.log(brands);
+//console.log(brands.length);
 
 // 🎯 TODO 4: Sort by price
 // 1. Create a function to sort the marketplace products by price
 // 2. Create a variable and assign it the list of products by price from lowest to highest
 // 3. Log the variable
+
+var sortedByPrice = marketplace.sort(function compare(a,b) {
+  if(a.price < b.price) return -1;
+  if(a.price > b.price) return 1;
+  return 0;
+});
+console.log(sortedByPrice);
 
 // 🎯 TODO 5: Sort by date
 // 1. Create a function to sort the marketplace objects by products date
