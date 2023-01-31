@@ -35,6 +35,9 @@ console.log(MY_FAVORITE_BRANDS[0]);
 // I can find on these e-shops
 // 2. Log the variable
 
+var cheapestLink = 'https://www.faguo-store.com/fr/vetements/7606-arcy-t-shirt-en-coton-recycle-kaki.html';
+console.log('Cheapest T-Shirt (17.5euros): \n', cheapestLink);
+
 /**
  * 👕
  * Easy 😁?
@@ -43,6 +46,8 @@ console.log(MY_FAVORITE_BRANDS[0]);
  * The variable is loaded by the file `data.js`
  * 👕
  */
+
+const {marketplace} = require('./data.js');
 
 // 🎯 TODO 2: Number of products
 // 1. Create a variable and assign it the number of products
