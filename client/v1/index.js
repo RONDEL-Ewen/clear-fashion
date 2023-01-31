@@ -477,7 +477,7 @@ for(let i = 0; i < COTELE_PARIS.length; i++) {
     COTELE_PARIS.splice(i, 1);
   }
 }
-console.log(COTELE_PARIS);
+//console.log(COTELE_PARIS);
 
 // 🎯 TODO 5: Save the favorite product
 // We declare and assign a variable called `blueJacket`
@@ -500,7 +500,10 @@ let jacket = blueJacket;
 jacket.favorite = true;
 
 // 1. Log `blueJacket` and `jacket` variables
+//console.log(blueJacket);
+//console.log(jacket);
 // 2. What do you notice?
+//blueJacket has also the new property `favorite` to true
 
 // we make a new assignment again
 blueJacket = {
@@ -516,6 +519,12 @@ blueJacket = {
 };
 
 // 3. Update `jacket` property with `favorite` to true WITHOUT changing blueJacket properties
+
+jacket = JSON.parse(JSON.stringify(blueJacket));
+jacket.favorite = true;
+
+console.log(blueJacket);
+console.log(jacket);
 
 /**
  * 🎬
