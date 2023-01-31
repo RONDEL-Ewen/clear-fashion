@@ -153,14 +153,31 @@ for(let i = 0; i < nbOfProducts; i++) {
   if(marketplace[i].brand == 'hast') 
     brands.hast.push(marketplace[i]);
 }
-console.log(brands);
-console.log(brands.panafrica.length);
-console.log(brands.loom.length);
-console.log(brands.hast.length);
+//console.log(brands);
+//console.log(brands.panafrica.length);
+//console.log(brands.loom.length);
+//console.log(brands.hast.length);
 
 // 🎯 TODO 9: Sort by price for each brand
 // 1. For each brand, sort the products by price, from highest to lowest
 // 2. Log the sort
+
+brands.panafrica.sort(function compare(a,b) {
+  if(a.price < b.price) return 1;
+  if(a.price > b.price) return -1;
+  return 0;
+});
+brands.loom.sort(function compare(a,b) {
+  if(a.price < b.price) return 1;
+  if(a.price > b.price) return -1;
+  return 0;
+});
+brands.hast.sort(function compare(a,b) {
+  if(a.price < b.price) return 1;
+  if(a.price > b.price) return -1;
+  return 0;
+});
+console.log(brands);
 
 // 🎯 TODO 10: Sort by date for each brand
 // 1. For each brand, sort the products by date, from old to recent
