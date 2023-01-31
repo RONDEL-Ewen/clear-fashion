@@ -92,11 +92,19 @@ var sortedByDate = marketplace.sort(function compareDate(a,b) {
   if(a.released > b.released) return 11;
   return 0;
 });
-console.log(sortedByDate);
+//console.log(sortedByDate);
 
 // 🎯 TODO 6: Filter a specific price range
 // 1. Filter the list of products between 50€ and 100€
 // 2. Log the list
+
+var marketplaceRange = [];
+for(let i = 0; i < nbOfProducts; i++) {
+  if(marketplace[i].price >= 50 && marketplace[i].price <= 100) {
+    marketplaceRange.push(marketplace[i]);
+  }
+}
+console.log(marketplaceRange);
 
 // 🎯 TODO 7: Average price
 // 1. Determine the average price of the marketplace
