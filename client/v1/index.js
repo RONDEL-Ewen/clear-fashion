@@ -523,8 +523,8 @@ blueJacket = {
 jacket = JSON.parse(JSON.stringify(blueJacket));
 jacket.favorite = true;
 
-console.log(blueJacket);
-console.log(jacket);
+//console.log(blueJacket);
+//console.log(jacket);
 
 /**
  * 🎬
