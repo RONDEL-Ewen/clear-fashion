@@ -28,6 +28,7 @@ const selectPage = document.querySelector('#page-select');
 const selectBrand = document.querySelector('#brand-select');
 const sectionProducts = document.querySelector('#products');
 const spanNbProducts = document.querySelector('#nbProducts');
+const selectSortingType = document.querySelector('#sort-select');
 
 /**
  * Set global value
@@ -38,6 +39,43 @@ const setCurrentProducts = ({result, meta}) => {
   currentProducts = result;
   currentPagination = meta;
 };
+
+const sortProducts = ({sortingType}) => {
+  const sortedProducts = [];
+  if(sortingType == 'price-asc') {
+    console.log('1');
+    sortedProducts = currentProducts.sort(function compare(a,b) {
+      if(a.price < b.price) return -1;
+      if(a.price > b.price) return 1;
+      return 0;
+    });
+  }
+  if(sortingType == 'price-desc') {
+    console.log('2');
+    sortedProducts = currentProducts.sort(function compare(a,b) {
+      if(a.price < b.price) return 1;
+      if(a.price > b.price) return -1;
+      return 0;
+    });
+  }
+  if(sortingType == 'date-asc') {
+    console.log('3');
+    sortedProducts = currentProducts.sort(function compare(a,b) {
+      if(a.released < b.released) return 1;
+      if(a.released > b.released) return -1;
+      return 0;
+    });
+  }
+  if(sortingType == 'date-desc') {
+    console.log('4');
+    sortedProducts = currentProducts.sort(function compare(a,b) {
+      if(a.released < b.released) return -1;
+      if(a.released > b.released) return 1;
+      return 0;
+    });
+  }
+  setCurrentProducts({sortedProducts, currentPagination});
+}
 
 /**
  * Set global value
@@ -172,3 +210,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   setCurrentProducts(products);
   render(currentProducts, currentPagination);
 });
+
+selectSortingType.addEventListener('change', async (event) => {
+  console.log(String(event.target.value));
+  sortProducts(String(event.target.value));
+  render(currentProducts, currentPagination);
+})
