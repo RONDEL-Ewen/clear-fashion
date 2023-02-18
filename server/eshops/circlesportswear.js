@@ -14,28 +14,29 @@ const parse = data => {
                       (current_date.getMonth() + 1) + "/" + 
                       current_date.getFullYear();
 
-  return $('.productList-container .productList')
+  return $('.product-grid .grid__item')
     .map((i, element) => {
       const name = $(element)
-        .find('.productList-title')
+        .find('.card__heading .full-unstyled-link')
         .text()
         .trim()
-        .replace(/\s/g, ' ')
+        .split('\n')[0]
         .toUpperCase();
       const price = parseInt(
         $(element)
-          .find('.productList-price')
-          .text()
+          .find('.money')
+          .text().substr(1)
       );
-      const brand = 'DEDICATED';
-      const link = 'https://www.dedicatedbrand.com' +
+      const brand = 'Circles Sportswear';
+      const link = 'https://shop.circlessportswear.com' +
         $(element)
-          .find('.productList-link')
+          .find('.card__heading .full-unstyled-link')
           .attr('href');
       /*
       const image = $(element)
-        .find('.productList-link .productList-image .js-lazy')
-        .find('.js-lazy entered loaded')
+        .find('.card__media')
+        .find('.media .media--transparent .media--hover-effect')
+        .find('.motion-reduce')
         .attr('src');
       */
       const date = formated_date;
