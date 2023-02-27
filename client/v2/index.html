@@ -3,9 +3,43 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>👕 Clear Fahion | Environmentally & human-friendly clothes</title>
+    <link rel="stylesheet" href="app-style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gloock&display=swap" rel="stylesheet">
   </head>
   <body>
     <h1>Clear fashion</h1>
+    <section id="indicators">
+      <div>
+        <span>Number of products:</span>
+        <span id="nbProducts">0</span>
+      </div>
+      <div>
+        <span>Number of brands:</span>
+        <span id="nbBrands">0</span>
+      </div>
+      <div>
+        <span>Number of new products:</span>
+        <span id="nbRecentProducts">0</span>
+      </div>
+      <div>
+        <span>p50 price value:</span>
+        <span id="spanP50">0</span>
+      </div>
+      <div>
+        <span>p90 price value:</span>
+        <span id="spanP90">0</span>
+      </div>
+      <div>
+        <span>p95 price value:</span>
+        <span id="spanP95">0</span>
+      </div>
+      <div>
+        <span>Last released date:</span>
+        <span id="spanLastReleased">2020-01-01</span>
+      </div>
+    </section>
     <section id="options">
       <div id="show">
         <label for="show-select">Show:</label>
@@ -17,24 +51,18 @@
       </div>
       <div id="page">
         <label for="page-select">Go to page:</label>
-        <select name="page" id="page-select"> </select>
+        <select name="page" id="page-select"></select>
       </div>
       <div id="filters">
-        <span>By reasonable price</span>
-        <span>By recently released</span>
+        <div id="showOnly">
+          <label>Show only:</label>
+          <input type="checkbox" id="showOnly-select-sale">Reasonable price</input>
+          <input type="checkbox" id="showOnly-select-new">Recently released</input>
+          <input type="checkbox" id="showOnly-select-favorite">Favorites</input>
+        </div>
         <div id="brand">
           <label for="brand-select">By brands:</label>
-          <select name="brand" id="brand-select">
-            <option value="All">--All--</option>
-            <option value="1083">1083</option>
-            <option value="aatise">aatise</option>
-            <option value="adresse">adresse</option>
-            <option value="coteleparis">coteleparis</option>
-            <option value="dedicated">dedicated</option>
-            <option value="hast">hast</option>
-            <option value="loom">loom</option>
-            <option value="panafrica">panafrica</option>
-          </select>
+          <select name="brand" id="brand-select"></select>
         </div>
       </div>
       <div id="sort">
@@ -47,37 +75,7 @@
         </select>
       </div>
     </section>
-    <section id="indicators">
-      <h2>Indicators</h2>
-      <div>
-        <span>Number of products</span>
-        <span id="nbProducts">0</span>
-      </div>
-      <div>
-        <span>Number of brands</span>
-        <span id="nbBrands">0</span>
-      </div>
-      <div>
-        <span>Number of new products</span>
-        <span>0</span>
-      </div>
-      <div>
-        <span>p50 price value</span>
-        <span>0</span>
-      </div>
-      <div>
-        <span>p90 price value</span>
-        <span>0</span>
-      </div>
-      <div>
-        <span>p95 price value</span>
-        <span>0</span>
-      </div>
-      <div>
-        <span>Last released date</span>
-        <span>2020-01-01</span>
-      </div>
-    </section>
+    <br>
     <section id="products"></section>
     <script type="text/javascript" charset="UTF-8" src="portfolio.js"></script>
   </body>
