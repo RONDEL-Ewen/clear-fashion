@@ -14,33 +14,26 @@ const parse = data => {
                       (current_date.getMonth() + 1) + "/" + 
                       current_date.getFullYear();
 
-  return $('.productList-container .productList')
+  return $('#filterItems .productList')
     .map((i, element) => {
       const name = $(element)
         .find('.productList-title')
         .text()
         .trim()
-        .replace(/\s/g, ' ')
-        .toUpperCase();
-      const price = parseInt(
-        $(element)
-          .find('.productList-price')
-          .text()
-      );
-      const brand = 'DEDICATED';
-      const link = 'https://www.dedicatedbrand.com' +
-        $(element)
-          .find('.productList-link')
-          .attr('href');
-      /*
+        .replace(/\s/g, ' ');
+      const price = parseFloat($(element)
+        .find('.productList-price')
+        .text());
+      const brand = "Dedicated";
+      const link = "https://www.dedicatedbrand.com" + $(element)
+        .find('.productList-link')
+        .attr('href');
       const image = $(element)
-        .find('.productList-link .productList-image .js-lazy')
-        .find('.js-lazy entered loaded')
-        .attr('src');
-      */
+        .find('.productList-image img')[0]
+        .attribs['data-src'];
       const date = formated_date;
 
-      return {name, price, brand, link, date};
+      return {name, price, brand, link, image, date};
     })
     .get();
 };

@@ -5,7 +5,7 @@ const dedicatedbrand = require('./eshops/dedicatedbrand');
 const montlimart = require('./eshops/montlimart');
 const circlesportswear = require('./eshops/circlesportswear');
 
-async function sandbox(eshop = 'https://www.dedicatedbrand.com/en/men/news') {
+async function sandbox() {
   try {
     console.log(`🕵️‍♀️  browsing...`);
 
