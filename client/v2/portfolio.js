@@ -146,9 +146,9 @@ const renderProducts = products => {
       i++;
       return `
       <div class="product" id=${product.uuid}>
-        <span>${product.brand}</span>
+        <span id="brand">${product.brand}</span>
         <a href="${product.link}" target="_blank">${product.name}</a>
-        <span>${product.price}€ </span><span id="${product.uuid}-fav">`
+        <span id="price">${product.price}€ </span><span id="${product.uuid}-fav">`
       + ((JSON.parse(localStorage.getItem("favorites")) || []).includes(product.uuid) ? `🖤 <button onclick=deleteToFavorite("` + product.uuid + `")>Delete from favorite</button>` : `<button onclick=addToFavorite(currentProducts[${i}].uuid)>Favorite</button>`) + `
       </span></div>
     `;

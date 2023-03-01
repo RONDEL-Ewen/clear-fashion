@@ -15,13 +15,15 @@ h1 {
 }
 
 h2 {
+    font-size: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
     font-family: 'Gloock', serif;
 }
   
 section {
     display: inline-block;
-    text-align: left;
-    /*display: flex;*/
 }
   
 #options {
@@ -73,11 +75,26 @@ section {
     font-size: 13px;
 }
 
+#filter input {
+    font-size: 13px;
+}
+
+#products {
+    width: 100%;
+}
+
+.products {
+    justify-content: center;
+}
+
 .product {
-    margin: 10px 10px;
+    width: 20%;
+    height: 250px;
+    margin: 30px 20px;
     padding: 10px;
     background-color: #f2f2f2;
     border-radius: 10px;
+    float: left;
 }
   
 .product span {
