@@ -98,6 +98,10 @@ section {
     border-radius: 10px;
     float: left;
     position: relative;
+    background-image: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.5) 15%, rgba(0,0,0,0) 40%);
+    background-size: 100% 50%;
+    background-position: bottom;
+    background-repeat: no-repeat;
 }
 
 .product a {
@@ -105,10 +109,10 @@ section {
     font-size: 15px;
     font-family: 'Gloock', serif;
     text-decoration: none;
-    color: #333;
+    color: #f2f2f2;
     position: absolute;
     left: 10px;
-    bottom: 10px;
+    bottom: 6px;
 }
   
 .product button {
@@ -133,9 +137,10 @@ section {
 }
 
 .product #price {
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'Gloock', serif;
     position: absolute;
     right: 10px;
-    bottom: 10px;
+    bottom: 5px;
+    color: #f2f2f2;
 }

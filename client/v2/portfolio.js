@@ -160,6 +160,7 @@ const renderProducts = products => {
         <div class="price">
           <span id="price">${product.price}€ </span>
         </div>
+        <div class="black-gradient"></div>
       </div>
     `;
     })
