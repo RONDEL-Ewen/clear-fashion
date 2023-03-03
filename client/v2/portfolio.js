@@ -146,21 +146,23 @@ const renderProducts = products => {
       i++;
       return `
       <div class="product" id=${product.uuid}>
-        <div class="favorite">
-          <span id="${product.uuid}-fav">`
-          + ((JSON.parse(localStorage.getItem("favorites")) || []).includes(product.uuid) ? `🖤 <button onclick=deleteToFavorite("` + product.uuid + `")>Remove</button>` : `<button onclick=addToFavorite(currentProducts[${i}].uuid)>Favorite</button>`) + `
-          </span>
-        </div>
         <div class="brand">
           <span id="brand">${product.brand}</span>
         </div>
+        <div class="favorite">
+          <span id="${product.uuid}-fav">`
+          + ((JSON.parse(localStorage.getItem("favorites")) || []).includes(product.uuid) ? `<button onclick=deleteToFavorite("` + product.uuid + `")>🖤</button>` : `<button onclick=addToFavorite(currentProducts[${i}].uuid)>🤍</button>`) + `
+          </span>
+        </div>
+        
+        <img src="https://tshirtstore.centracdn.net/client/dynamic/images/8459_9984fd4420-dedicated_ss23_dag-602453-ded-standard.jpg" alt="Default image">
         <div class="link">
           <a href="${product.link}" target="_blank">${product.name}</a>
         </div>
         <div class="price">
           <span id="price">${product.price}€ </span>
         </div>
-        <div class="black-gradient"></div>
+        <div class="overlay"></div>
       </div>
     `;
     })
@@ -264,14 +266,14 @@ function addToFavorite(product) {
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   favorites.push(product);
   localStorage.setItem("favorites", JSON.stringify(favorites));
-  document.getElementById(product + "-fav").innerHTML = `🖤 <button onclick=deleteToFavorite("` + product + `")>Remove</button>`;
+  document.getElementById(product + "-fav").innerHTML = `<button onclick=deleteToFavorite("` + product + `")>🖤</button>`;
 }
 
 async function deleteToFavorite(product) {
   var favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   favorites = favorites.filter(favorite => favorite != product);
   localStorage.setItem("favorites", JSON.stringify(favorites));
-  document.getElementById(product + "-fav").innerHTML = `<button onclick=addToFavorite("` + product + `")>Favorite</button>`;
+  document.getElementById(product + "-fav").innerHTML = `<button onclick=addToFavorite("` + product + `")>🤍</button>`;
   if(showOnlySelectFavorite.checked){
     const products = await fetchProducts(1, currentPagination.pageSize, brandSelect.value, sortSelect.value, [showOnlySelectSale.checked, showOnlySelectNew.checked, showOnlySelectFavorite.checked]);
     setCurrentProducts(products);
