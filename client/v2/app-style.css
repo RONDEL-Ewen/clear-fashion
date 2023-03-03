@@ -16,8 +16,8 @@ h1 {
 
 h2 {
     font-size: 40px;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 5px;
     text-align: center;
     font-family: 'Gloock', serif;
 }
@@ -78,10 +78,12 @@ section {
 #filter input {
     font-size: 13px;
 }
-
+/*
 #products {
+    float: flex;
     width: 100%;
 }
+*/
 
 .products {
     justify-content: center;
@@ -90,24 +92,23 @@ section {
 .product {
     width: 20%;
     height: 250px;
-    margin: 30px 20px;
+    margin: 20px 20px;
     padding: 10px;
     background-color: #f2f2f2;
     border-radius: 10px;
     float: left;
+    position: relative;
 }
-  
-.product span {
-    font-size: 16px;
-    margin:  0 10px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-  
+
 .product a {
-    font-size: 18px;
+    width: 70%;
+    font-size: 15px;
+    font-family: 'Gloock', serif;
     text-decoration: none;
     color: #333;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
 }
   
 .product button {
@@ -119,5 +120,22 @@ section {
     cursor: pointer;
     font-size: 14px;
     font-weight: bold;
-    float: right;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.product #brand {
+    font-size: 16px;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: 'Gloock', serif;
+}
+
+.product #price {
+    font-size: 30px;
+    font-family: 'Gloock', serif;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
