@@ -154,8 +154,7 @@ const renderProducts = products => {
           + ((JSON.parse(localStorage.getItem("favorites")) || []).includes(product.uuid) ? `<button onclick=deleteToFavorite("` + product.uuid + `")>🖤</button>` : `<button onclick=addToFavorite(currentProducts[${i}].uuid)>🤍</button>`) + `
           </span>
         </div>
-        
-        <img src="https://tshirtstore.centracdn.net/client/dynamic/images/8459_9984fd4420-dedicated_ss23_dag-602453-ded-standard.jpg" alt="Default image">
+        <img class="image" src="https://tshirtstore.centracdn.net/client/dynamic/images/8459_9984fd4420-dedicated_ss23_dag-602453-ded-standard.jpg" alt="Default image">
         <div class="link">
           <a href="${product.link}" target="_blank">${product.name}</a>
         </div>
