@@ -47,10 +47,10 @@ const setCurrentProducts = ({result, meta}) => {
 /**
  * Fetch products from api
  * @param  {Number}  [page=1] - current page to fetch
- * @param  {Number}  [size=12] - size of the page
+ * @param  {Number}  [size=48] - size of the page
  * @return {Object}
  */
-const fetchProducts = async (page = 1, size = 12, brand = "all", sortBy = "price-asc", filter = [false, false, false]) => {
+const fetchProducts = async (page = 1, size = 48, brand = "all", sortBy = "price-asc", filter = [false, false, false]) => {
   try {
     const response = await fetch(
       `https://clear-fashion-api.vercel.app?size=999` + (brand !== "all" ? `&brand=${brand}` : "")
@@ -154,7 +154,7 @@ const renderProducts = products => {
           + ((JSON.parse(localStorage.getItem("favorites")) || []).includes(product.uuid) ? `<button onclick=deleteToFavorite("` + product.uuid + `")>🖤</button>` : `<button onclick=addToFavorite(currentProducts[${i}].uuid)>🤍</button>`) + `
           </span>
         </div>
-        <img class="image" src="https://tshirtstore.centracdn.net/client/dynamic/images/8459_9984fd4420-dedicated_ss23_dag-602453-ded-standard.jpg" alt="Default image">
+        <img class="image" src=${product.photo} alt="Default image">
         <div class="link">
           <a href="${product.link}" target="_blank">${product.name}</a>
         </div>
@@ -169,7 +169,7 @@ const renderProducts = products => {
 
   div.innerHTML = template;
   fragment.appendChild(div);
-  sectionProducts.innerHTML = '<h2>Products</h2>';
+  sectionProducts.innerHTML = '<h2>Products.</h2>';
   sectionProducts.appendChild(fragment);
 };
 
