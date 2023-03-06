@@ -1,3 +1,13 @@
+function create_UUID(){
+  var dt = new Date().getTime();
+  var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (dt + Math.random()*16)%16 | 0;
+      dt = Math.floor(dt/16);
+      return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+  });
+  return uuid;
+}
+
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
 
@@ -32,16 +42,14 @@ const parse = data => {
         $(element)
           .find('.card__heading .full-unstyled-link')
           .attr('href');
-      /*
-      const image = $(element)
-        .find('.card__media')
-        .find('.media .media--transparent .media--hover-effect')
-        .find('.motion-reduce')
-        .attr('src');
-      */
+      const image = "https:" + 
+        $(element)
+          .find("img")
+          .attr("src");
       const date = formated_date;
+      const uuid = create_UUID();
 
-      return {name, price, brand, link, date};
+      return {name, price, brand, link, image, date, uuid};
     })
     .get();
 };
