@@ -2,18 +2,23 @@ const fs = require('fs');
 const {MongoClient} = require('mongodb');
 const {connect} = require('http2');
 const moment = require('moment');
-require('dotenv').config();
+require('dotenv').config({path:'../.env'});
 
 const brandsList = ['Dedicated','Montlimart','Circles Sportswear'];
 
 async function storeProducts() {
 
-  //username: ewenrondel
-  //password: zCDm8kceZKiNrizU
-  //cluster-url: clearfashion.j40ik1r.mongodb.net
-
-  const MONGODB_URI = 'mongodb+srv://ewenrondel:zCDm8kceZKiNrizU@clearfashion.j40ik1r.mongodb.net?retryWrites=true&writeConcern=majority';
-  const MONGODB_DB_NAME = 'clearfashion';
+  const username = process.env.MONGODB_USERNAME;
+  const password = process.env.MONGODB_PASSWORD;
+  const cluster = process.env.MONGODB_CLUSTER;
+  const MONGODB_URI = 'mongodb+srv://' +
+                      username +
+                      ':' +
+                      password +
+                      '@' +
+                      cluster +
+                      '?retryWrites=true&writeConcern=majority';
+  const MONGODB_DB_NAME = process.env.MONGODB_NAME;
 
   const client = await MongoClient.connect(MONGODB_URI, {'useNewUrlParser': true});
   const db = client.db(MONGODB_DB_NAME);
@@ -38,8 +43,17 @@ async function storeProducts() {
 
 async function fetchProductsMongoDB(brand = undefined, maxPrice = undefined, sortedByPrice = undefined, sortedByDate = undefined, recent = undefined) {
 
-  const MONGODB_URI = 'mongodb+srv://ewenrondel:zCDm8kceZKiNrizU@clearfashion.j40ik1r.mongodb.net?retryWrites=true&writeConcern=majority';
-  const MONGODB_DB_NAME = 'clearfashion';
+  const username = process.env.MONGODB_USERNAME;
+  const password = process.env.MONGODB_PASSWORD;
+  const cluster = process.env.MONGODB_CLUSTER;
+  const MONGODB_URI = 'mongodb+srv://' +
+                      username +
+                      ':' +
+                      password +
+                      '@' +
+                      cluster +
+                      '?retryWrites=true&writeConcern=majority';
+  const MONGODB_DB_NAME = process.env.MONGODB_NAME;
 
   const client = await MongoClient.connect(MONGODB_URI, {'useNewUrlParser': true});
   const db = client.db(MONGODB_DB_NAME);
@@ -91,6 +105,4 @@ async function fetchProductsMongoDB(brand = undefined, maxPrice = undefined, sor
 
 //storeProducts();
 
-//fetchProductsMongoDB("Dedicated", 50, true, true, true);
-
-console.log(env.MONGO_DB_USERNAME);
+fetchProductsMongoDB("Dedicated", 50, true, true, true);
