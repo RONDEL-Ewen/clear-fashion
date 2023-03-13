@@ -2,6 +2,7 @@ const fs = require('fs');
 const {MongoClient} = require('mongodb');
 const {connect} = require('http2');
 const moment = require('moment');
+require('dotenv').config();
 
 const brandsList = ['Dedicated','Montlimart','Circles Sportswear'];
 
@@ -90,4 +91,6 @@ async function fetchProductsMongoDB(brand = undefined, maxPrice = undefined, sor
 
 //storeProducts();
 
-fetchProductsMongoDB("Dedicated", 50, true, true, true);
+//fetchProductsMongoDB("Dedicated", 50, true, true, true);
+
+console.log(env.MONGO_DB_USERNAME);
