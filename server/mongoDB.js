@@ -103,6 +103,6 @@ async function fetchProductsMongoDB(brand = undefined, maxPrice = undefined, sor
 
 }
 
-//storeProducts();
+storeProducts();
 
-fetchProductsMongoDB("Dedicated", 50, true, true, true);
+//fetchProductsMongoDB("Dedicated", 50, true, true, true);

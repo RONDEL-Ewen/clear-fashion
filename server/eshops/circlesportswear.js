@@ -1,3 +1,4 @@
+/*
 function create_UUID(){
   var dt = new Date().getTime();
   var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -7,6 +8,20 @@ function create_UUID(){
   });
   return uuid;
 }
+*/
+
+function create_UUID() {
+  const characters = 'abcdef0123456789';
+  let uuid = '';
+
+  for (let i = 0; i < 24; i++) {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+    uuid += characters[randomIndex];
+  }
+
+  return uuid;
+}
+
 
 const fetch = require('node-fetch');
 const cheerio = require('cheerio');
