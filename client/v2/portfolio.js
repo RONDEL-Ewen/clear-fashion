@@ -52,26 +52,35 @@ const setCurrentProducts = ({result, meta}) => {
  */
 const fetchProducts = async (page = 1, size = 48, brand = "all", sortBy = "price-asc", filter = [false, false, false]) => {
   try {
+    /*
     const response = await fetch(
       `https://clear-fashion-api.vercel.app?size=999` + (brand !== "all" ? `&brand=${brand}` : "")
     );
+    */
+    const response = await fetch(
+      `http://localhost:8092/products/search?limit=999` + (brand !== "all" ? `&brand=${brand}` : "")
+    ).catch(error => console.error(error));
     const body = await response.json();
-
+    /*
     if (body.success !== true) {
       console.error(body);
       return {currentProducts, currentPagination};
     }
     var result = body.data.result;
+    */
+    var result = body.result;
     
     // filters
     if(filter[0]) {
       result = result.filter(product => product.price < 50);
     }
     if(filter[1]) {
-      result = result.filter(product => (new Date() - new Date(product.released)) / (1000 * 60 * 60 * 24) < 14);
+      //result = result.filter(product => (new Date() - new Date(product.released)) / (1000 * 60 * 60 * 24) < 14);
+      result = result.filter(product => (new Date() - new Date(product.date)) / (1000 * 60 * 60 * 24) < 14);
     }
     if(filter[2]) {
-      result = result.filter(product => (JSON.parse(localStorage.getItem("favorites")) || []).includes(product.uuid));
+      //result = result.filter(product => (JSON.parse(localStorage.getItem("favorites")) || []).includes(product.uuid));
+      result = result.filter(product => (JSON.parse(localStorage.getItem("favorites")) || []).includes(product._id));
     };
 
     var meta = {
@@ -88,10 +97,12 @@ const fetchProducts = async (page = 1, size = 48, brand = "all", sortBy = "price
       result.sort((a, b) => b.price - a.price);
     }
     else if(sortBy === "date-asc") {
-      result.sort((a, b) => new Date(b.released) - new Date(a.released));
+      //result.sort((a, b) => new Date(b.released) - new Date(a.released));
+      result.sort((a, b) => new Date(b.date) - new Date(a.date));
     }
     else if(sortBy === "date-desc") {
-      result.sort((a, b) => new Date(a.released) - new Date(b.released));
+      //result.sort((a, b) => new Date(a.released) - new Date(b.released));
+      result.sort((a, b) => new Date(a.date) - new Date(b.date));
     }
 
     brandsCount = 0
@@ -105,11 +116,17 @@ const fetchProducts = async (page = 1, size = 48, brand = "all", sortBy = "price
       }, {});
     };
 
-    recentProducts = result.filter(product => (new Date() - new Date(product.released)) / (1000 * 60 * 60 * 24) < 14).length;
+    //recentProducts = result.filter(product => (new Date() - new Date(product.released)) / (1000 * 60 * 60 * 24) < 14).length;
+    recentProducts = result.filter(product => (new Date() - new Date(product.date)) / (1000 * 60 * 60 * 24) < 14).length;
 
+    /*
     lastRelease = result.length > 0 ? result.reduce(function(a,b) {
       return new Date(a.released) > new Date(b.released) ? a : b;
     }).released : "Nan";
+    */
+    lastRelease = result.length > 0 ? result.reduce(function(a,b) {
+      return new Date(a.date) > new Date(b.date) ? a : b;
+    }).date : "Nan";
 
     if(result.length > 0)
     {
@@ -141,6 +158,7 @@ const renderProducts = products => {
   const fragment = document.createDocumentFragment();
   const div = document.createElement('div');
   let i = -1;
+  /*
   const template = products
     .map(product => {
       i++;
@@ -162,6 +180,34 @@ const renderProducts = products => {
           <span id="price">${product.price}€ </span>
         </div>
         <div class="overlay"></div>
+      </div>
+    `;
+    })
+    .join('');
+  */
+
+  const template = products
+    .map(product => {
+      i++;
+      return `
+      <div class="product" id=${product._id}>
+        <div class="brand">
+          <span id="brand">${product.brand}</span>
+        </div>
+        <div class="favorite">
+          <span id="${product._id}-fav">`
+          + ((JSON.parse(localStorage.getItem("favorites")) || []).includes(product._id) ? `<button onclick=deleteToFavorite("` + product._id + `")>🖤</button>` : `<button onclick=addToFavorite(currentProducts[${i}]._id)>🤍</button>`) + `
+          </span>
+        </div>
+        <img class="image" src=${product.image} alt="Default image">
+        <div class="link">
+          <a href="${product.link}" target="_blank">${product.name}</a>
+        </div>
+        <div class="price">
+          <span id="price">${product.price}€ </span>
+        </div>
+        <div class="overlay-down"></div>
+        <div class="overlay-top"></div>
       </div>
     `;
     })
@@ -242,12 +288,14 @@ const render = (products, pagination) => {
 };
 
 async function fetchBrands() {
+  /*
   try {
+    
     const response = await fetch(
       'https://clear-fashion-api.vercel.app/brands'
     );
     const body = await response.json();
-
+    
     if (body.success !== true) {
       console.error(error);
     }
@@ -256,9 +304,16 @@ async function fetchBrands() {
       brands.unshift("all");
       renderBrands(brands);
     }
+
   } catch (error) {
     console.error(error);
   }
+  */
+
+var brands = ["Dedicated", "Montlimart", "Circles Sportswear"];
+brands.unshift("all");
+renderBrands(brands);
+
 }
 
 function addToFavorite(product) {

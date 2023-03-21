@@ -3,6 +3,7 @@ body {
     background-color: #dbbc9b7e;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
   
 h1 {
@@ -12,6 +13,7 @@ h1 {
     text-align: center;
     color: #333;
     font-family: 'Gloock', serif;
+    text-shadow: -4px -2px 0 rgba(0, 0, 0, 0.1);
     /*text-decoration: line-through;
     text-decoration-thickness: 3px;*/
 }
@@ -23,6 +25,7 @@ h2 {
     text-align: center;
     color: #333;
     font-family: 'Gloock', serif;
+    text-shadow: -3px -2px 0 rgba(0, 0, 0, 0.1);
 }
   
 section {
@@ -33,7 +36,7 @@ section {
     border-top: 2px solid #333;
     border-bottom: 2px solid #333;
     width: 100%;
-    background-color: #f2f2f2;
+    background-color: #f2f2f28d;
     padding: 2px;
 }
   
@@ -51,10 +54,10 @@ section {
 #options select, #options input[type="checkbox"] {
     margin-left: 10px;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 0px solid #ccc;
     border-radius: 5px;
-    background-color: #f5f5f5;
     font-size: 12px;
+    background-color: #f2f2f2c3;
 }
   
 #indicators {
@@ -62,7 +65,7 @@ section {
     border-bottom: 2px solid #333;
     width: 100%;
     padding: 2px;
-    background-color: #f2f2f2;
+    background-color: #f2f2f28d;
 }
   
 #indicators div {
@@ -104,7 +107,7 @@ section {
     position: relative;
 }
 
-.overlay {
+.overlay-down {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -114,8 +117,18 @@ section {
     z-index: 1;
 }
 
+.overlay-top {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 15%, rgba(255,255,255,0) 30%);
+    z-index: 1;
+}
+
 .product a {
-    width: 70%;
+    width: 60%;
     font-size: 15px;
     font-family: 'Gloock', serif;
     text-decoration: none;
@@ -127,12 +140,9 @@ section {
 }
   
 .product button {
-    /*background-color: #333;
-    color: #fff;*/
     background-color: transparent;
     border: none;
     border-radius: 10px;
-    /*padding: 5px 10px;*/
     cursor: pointer;
     font-size: 20px;
     font-weight: bold;
@@ -185,5 +195,21 @@ section {
 }
   
 .product:hover .image {
-    transform: scale(1.3);
+    transform: scale(1.4);
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+  
+::-webkit-scrollbar-track {
+    /*background-color: #f1f1f1;*/
+    background-color: transparent;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 10px;
+    border: 0px solid #f1f1f1;
 }
